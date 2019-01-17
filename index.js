@@ -54,20 +54,20 @@ function division(formattedAnswer) {
 }
 
 // mother boolean function
-const isComparisonAccurate = () => {
-  rl.question("", answer => {
-    let formattedAnswer = answer.split(" ");
-    if (formattedAnswer[1] === ">") {
-      isGreaterThan(formattedAnswer);
-    } else if (formattedAnswer[1] === "<") {
-      isLessThan(formattedAnswer);
-    } else if (formattedAnswer[1] === "=") {
-      isEqualTo(formattedAnswer);
-    }
-    isComparisonAccurate();
-  });
-};
-isComparisonAccurate();
+// const isComparisonAccurate = () => {
+//   rl.question("", answer => {
+//     let formattedAnswer = answer.split(" ");
+//     if (formattedAnswer[1] === ">") {
+//       isGreaterThan(formattedAnswer);
+//     } else if (formattedAnswer[1] === "<") {
+//       isLessThan(formattedAnswer);
+//     } else if (formattedAnswer[1] === "=") {
+//       isEqualTo(formattedAnswer);
+//     }
+//     isComparisonAccurate();
+//   });
+// };
+// isComparisonAccurate();
 
 // baby boolean functions
 function isGreaterThan(formattedAnswer) {
@@ -93,3 +93,20 @@ function isEqualTo(formattedAnswer) {
     console.log("false");
   }
 }
+
+// variable function
+const createVariable = () => {
+  rl.question("", answer => {
+    let formattedAnswer = answer.split(" ");
+    if (formattedAnswer[2] === "=") {
+      createdVariables[formattedAnswer[1]] = formattedAnswer[3];
+    }
+    if (formattedAnswer.length === 1 && createdVariables[formattedAnswer[0]]) {
+      console.log(createdVariables[formattedAnswer[0]]);
+    }
+    createVariable();
+  });
+};
+createVariable();
+
+const createdVariables = {};
