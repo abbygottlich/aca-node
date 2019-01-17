@@ -13,9 +13,9 @@ const mother = () => {
     if (formattedAnswer[1] === "+" || "-" || "*" || "/") {
       calculator(answer);
     } else if (formattedAnswer[1] === ">" || "<" || "=") {
-      isComparisonAccurate(answer);
+      isComparisonAccurate();
     } else if (formattedAnswer[2] === "=") {
-      createVariable(answer);
+      createVariable();
     }
     mother();
   });
@@ -53,7 +53,7 @@ function division(formattedAnswer) {
 }
 
 // mother boolean function
-const isComparisonAccurate = answer => {
+const isComparisonAccurate = () => {
   let formattedAnswer = answer.split(" ");
   if (formattedAnswer[1] === ">") {
     isGreaterThan(formattedAnswer);
@@ -90,7 +90,7 @@ function isEqualTo(formattedAnswer) {
 }
 
 // variable function
-const createVariable = answer => {
+const createVariable = () => {
   let formattedAnswer = answer.split(" ");
   if (formattedAnswer[2] === "=") {
     createdVariables[formattedAnswer[1]] = formattedAnswer[3];
