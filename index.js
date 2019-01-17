@@ -1,3 +1,4 @@
+// readline setup
 const readline = require("readline");
 
 const rl = readline.createInterface({
@@ -5,24 +6,37 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const calculator = () => {
-  rl.question("", answer => {
-    let formattedAnswer = answer.split(" ");
-    if (formattedAnswer[1] === "+") {
-      addition(formattedAnswer);
-    } else if (formattedAnswer[1] === "-") {
-      subtraction(formattedAnswer);
-    } else if (formattedAnswer[1] === "*") {
-      multiplication(formattedAnswer);
-    } else if (formattedAnswer[1] === "/") {
-      division(formattedAnswer);
-    }
-    calculator();
-  });
-};
-calculator();
+// mother of all functions
+// const mother = () => {
+//   rl.question("", answer => {
+//     let formattedAnswer = answer.split(" ");
+//     if (formattedAnswer[1] === "+" || "-" || "*" || "/") {
+//       calculator();
+//     } else if (formattedAnswer[1] === ">" || "<" || "=") {
+//       isComparisonAccurate();
+//     }
+//     mother();
+//   });
 
-// calculator functions
+// mother calculator function
+// const calculator = () => {
+//   rl.question("", answer => {
+//     let formattedAnswer = answer.split(" ");
+//     if (formattedAnswer[1] === "+") {
+//       addition(formattedAnswer);
+//     } else if (formattedAnswer[1] === "-") {
+//       subtraction(formattedAnswer);
+//     } else if (formattedAnswer[1] === "*") {
+//       multiplication(formattedAnswer);
+//     } else if (formattedAnswer[1] === "/") {
+//       division(formattedAnswer);
+//     }
+//     calculator();
+//   });
+// };
+// calculator();
+
+// baby calculator functions
 function addition(formattedAnswer) {
   console.log(parseInt(formattedAnswer[0]) + parseInt(formattedAnswer[2]));
 }
@@ -39,45 +53,43 @@ function division(formattedAnswer) {
   console.log(parseInt(formattedAnswer[0]) / parseInt(formattedAnswer[2]));
 }
 
-// // boolean functions
-// function isGreaterThan(userInput) {
-//   if (userInput.keyCode === 13) {
-//     let equation = userInput.split(" ");
-//     if (equation[1] === ">" && parseInt(equation[0]) > parseInt(equation[2])) {
-//       return true;
-//       console.log(true);
-//     } else {
-//       return false;
-//       console.log(false);
-//     }
-//   }
-// }
+// mother boolean function
+const isComparisonAccurate = () => {
+  rl.question("", answer => {
+    let formattedAnswer = answer.split(" ");
+    if (formattedAnswer[1] === ">") {
+      isGreaterThan(formattedAnswer);
+    } else if (formattedAnswer[1] === "<") {
+      isLessThan(formattedAnswer);
+    } else if (formattedAnswer[1] === "=") {
+      isEqualTo(formattedAnswer);
+    }
+    isComparisonAccurate();
+  });
+};
+isComparisonAccurate();
 
-// function isLessThan(userInput) {
-//   if (userInput.keyCode === 13) {
-//     let equation = userInput.split(" ");
-//     if (equation[1] === "<" && parseInt(equation[0]) < parseInt(equation[2])) {
-//       return true;
-//       console.log(true);
-//     } else {
-//       return false;
-//       console.log(false);
-//     }
-//   }
-// }
+// baby boolean functions
+function isGreaterThan(formattedAnswer) {
+  if (parseInt(formattedAnswer[0]) > parseInt(formattedAnswer[2])) {
+    console.log("true");
+  } else {
+    console.log("false");
+  }
+}
 
-// function isEqualTo(userInput) {
-//   if (userInput.keyCode === 13) {
-//     let equation = userInput.split(" ");
-//     if (
-//       equation[1] === "=" &&
-//       parseInt(equation[0]) === parseInt(equation[2])
-//     ) {
-//       return true;
-//       console.log(true);
-//     } else {
-//       return false;
-//       console.log(false);
-//     }
-//   }
-// }
+function isLessThan(formattedAnswer) {
+  if (parseInt(formattedAnswer[0]) < parseInt(formattedAnswer[2])) {
+    console.log("true");
+  } else {
+    console.log("false");
+  }
+}
+
+function isEqualTo(formattedAnswer) {
+  if (parseInt(formattedAnswer[0]) === parseInt(formattedAnswer[2])) {
+    console.log("true");
+  } else {
+    console.log("false");
+  }
+}
